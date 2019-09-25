@@ -55,18 +55,21 @@ _start:
     la gp, __global_pointer$
     .option pop
 
+#if !defined(SKIP_MULTICORE)
     // Check hart id
     csrr a2, mhartid
     lui t0, %hi(_max_hart_id)
     add t0, t0, %lo(_max_hart_id)
     bgtu a2, t0, abort
-
+#endif // SKIP_MULTICORE
     // Allocate stacks
     la sp, _stack_start
+#if !defined(SKIP_MULTICORE)
     lui t0, %hi(_hart_stack_size)
     add t0, t0, %lo(_hart_stack_size)
     mul t0, a2, t0
     sub sp, sp, t0
+#endif // SKIP_MULTICORE
 
     // Set frame pointer
     add s0, sp, zero
