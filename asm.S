@@ -15,6 +15,7 @@ _start:
     .cfi_startproc
     .cfi_undefined ra
 
+#if !defined(SKIP_MULTICORE)
     csrw mie, 0
     csrw mip, 0
 
@@ -49,6 +50,7 @@ _start:
     li  x29,0
     li  x30,0
     li  x31,0
+#endif // SKIP_MULTICORE
 
     .option push
     .option norelax
