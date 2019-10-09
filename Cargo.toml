@@ -1,21 +1,21 @@
 [package]
 name = "riscv-rt"
-version = "0.6.1"
-repository = "https://github.com/rust-embedded/riscv-rt"
-authors = ["The RISC-V Team <risc-v@teams.rust-embedded.org>"]
+version = "0.6.2"
+repository = "https://github.com/betrusted-io/riscv-rt"
+authors = ["Sean Cross <sean@xobs.io>", "The RISC-V Team <risc-v@teams.rust-embedded.org>"]
 categories = ["embedded", "no-std"]
-description = "Minimal runtime / startup for RISC-V CPU's"
+description = "Minimal runtime / startup for Xoulon RISC-V CPU"
 keywords = ["riscv", "runtime", "startup"]
 license = "ISC"
 
 [dependencies]
 r0 = "0.2.2"
-riscv = "0.5.3"
+riscv = { git = "https://github.com/betrusted-io/riscv.git", tag = "v0.5.5" }
 riscv-rt-macros = { path = "macros", version = "0.1.6" }
 
 [features]
 inline-asm = ["riscv/inline-asm"]
 
 [dev-dependencies]
-riscv = "0.5.3"
+riscv = { git = "https://github.com/betrusted-io/riscv.git", tag = "v0.5.5" }
 panic-halt = "0.2.0"
